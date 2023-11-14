@@ -113,7 +113,7 @@ dbt run -s hub_salesorderitems  --full-refresh
 dbt run -s lnk_product_salesorderitem  --full-refresh 
 ```
 
-![raw vault](docs/images/nk.png)
+![raw vault](docs/images/lnk.png)
 
 ### Creating satellites
 
@@ -123,7 +123,6 @@ dbt run -s sat_salesorder_details  --full-refresh
 ```
 
 ![raw vault](docs/images/sat.png)
-
 
 # dbt auto doc generation
 
@@ -145,7 +144,3 @@ dbt docs serve
 ![docs detail](docs/images/doc_detail.png)
 
 ![docs detail](docs/images/doc_detail_compiled.png)
-
-
-
-
