@@ -1,3 +1,4 @@
 db-data/
 logs/
 pgadmin-data/
+.DS_Store
