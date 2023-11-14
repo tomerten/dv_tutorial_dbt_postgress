@@ -51,7 +51,7 @@ dbt debug
 
 should show a working setup and database connection.
 
-![Example Image](docs/image/debug.png)
+![Example Image](docs/images/debug.png)
 
 Now copy the datafiles:
 
@@ -69,7 +69,7 @@ dbt seed
 
 This takes a moment and will insert the data into the database.
 
-![Example Image](docs/image/seed.png)
+![Example Image](docs/images/seed.png)
 
 ### Using the starter project
 
