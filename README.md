@@ -13,7 +13,7 @@ docker-compose up
 In another shell we start the python dev environment container (Python 3.9 on Debian 9 with pandas and dbt-postgres installed):
 
 ```bash
-docker run -it --network=dv_tutorial_db-server-network --mount src="$(pwd)",target=/app,type=bind dv_tutorial_dbt bash
+docker run -it --network=dv_tutorial_dbt_postgress_db-server-network --mount src="$(pwd)",target=/app,type=bind dv_tutorial_dbt_postgress-dbt bash
 ```
 
 Now a command line in the dev container will open. In this container we run:
