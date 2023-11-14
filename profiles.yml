@@ -1,0 +1,12 @@
+dv_tutorial:
+  outputs:
+    dev:
+      dbname: dv_test
+      host: sqlNode1
+      pass: abcd
+      port: 5432
+      schema: dbo
+      threads: 1
+      type: postgres
+      user: dev
+  target: dev
