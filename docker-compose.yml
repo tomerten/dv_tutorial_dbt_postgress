@@ -1,0 +1,64 @@
+version: '3.9'
+
+networks:
+    db-server-network:
+      ipam:
+        driver: default
+        config:
+          - subnet: "172.16.238.0/24"
+
+services:
+  db1:
+    image: 'postgres:latest'
+    hostname: sqlNode1
+    ports:
+    - "5432:5432"
+    env_file:
+      - .env
+    networks:
+      db-server-network:
+        ipv4_address: 172.16.238.11
+        aliases: 
+        - sqlNode1
+    volumes:
+      - ./db-data:/var/lib/postgresql/data
+      - ./init.sql:/docker-entrypoint-initdb.d/init.sql
+
+  pgadmin:
+    image: dpage/pgadmin4
+    hostname: pgadmin
+    ports:
+    - "15433:80"
+    env_file:
+      - .env
+    depends_on:
+      - db1
+    networks:
+      db-server-network:
+        ipv4_address: 172.16.238.12
+        aliases: 
+        - sqlAdmin
+    volumes:
+      - ./pgadmin-data:/var/lib/pgadmin
+
+
+  dbt:
+    build:
+      context: .
+      dockerfile: PythonDbtDev.Dockerfile
+    environment:
+      DBT_PROFILES_DIR: /dbt
+      DBT_PROFILE: sqlserver
+      DBT_HOST: db
+      DBT_PORT: 1433
+      DBT_USER: sa
+      DBT_PASS: YourStrong!Passw0rd
+      DBT_DB_NAME: dbt
+    volumes:
+      - .:/dbt
+    networks:
+      - db-server-network
+
+# networks:
+#   dbt_network:
+#     driver: bridge
