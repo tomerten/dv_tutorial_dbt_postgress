@@ -1,3 +1,3 @@
-/db-data
-/logs
-/pgadmin-data
+./db-data
+./logs
+./pgadmin-data
