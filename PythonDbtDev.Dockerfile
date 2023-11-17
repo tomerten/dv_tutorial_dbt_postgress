@@ -15,6 +15,7 @@ RUN ACCEPT_EULA=Y apt-get install -y msodbcsql17 && \
     apt-get install -y libffi-dev && \
     apt-get install -y build-essential && \
     apt-get install -y vim && \
+    pip install dbt-fal[postgres] && \
     pip install dbt-postgres pandas
 
 ADD . /app
