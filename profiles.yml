@@ -1,12 +1,15 @@
 dv_tutorial:
   outputs:
     dev:
-      dbname: dv_test
-      host: sqlNode1
+      type: fal
+      db_profile: dev_postgres
+    dev_postgres:
+      type: postgres
+      user: dev
       pass: abcd
       port: 5432
       schema: dbo
       threads: 1
-      type: postgres
-      user: dev
+      host: sqlNode1
+      dbname: dv_test
   target: dev

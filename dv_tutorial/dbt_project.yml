@@ -33,6 +33,12 @@ models:
     # Config indicated by + and applies to all files under models/example/
     stage:
       +materialized: view
+  marts:
+    +materialized: table
+    aggregates:
+      +docs:
+        node_color: Maroon
+      +tags: "bi"
 seeds:
   +quote_columns: false
 quoting:
