@@ -86,6 +86,17 @@ In the image below we can see that the raw tables are loaded into the database.
 
 `dbt` allows you to run separate stage scripts so you can trace step by step what you are doing. If you want to run everything at once: `dbt run`.
 
+## Dependencies: automate-dv
+
+Now you need to install the dependencies (`packages.yml`):
+
+```yaml
+packages:
+  - package: Datavault-UK/automate_dv
+    version: 0.10.1
+```
+
+
 ## Creating the staging tables
 
 ```bash
@@ -124,7 +135,15 @@ dbt run -s sat_salesorder_details  --full-refresh
 
 ![raw vault](docs/images/sat.png)
 
-# dbt auto doc generation
+### Aggregating
+
+As a test I tried to aggregate some simple data using a python model (`models/aggregate/mean_weight_product_cat.py`). In order for this to work I needed a third-party library `dbt-fal[postgres]`.
+
+>NOTE: Install first dbt-fal[postgres] and then dbt-postgres, otherwise you have some version issues.
+
+![agg](docs/images/python_model_agg.png)
+
+## dbt auto doc generation
 
 `dbt` can autogenerate docs.
 
